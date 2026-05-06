@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Birthday Surprise</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, Arial;
+            text-align: center;
+            background: linear-gradient(135deg, #232d45, #1f2940);
+        }
+
+        /* Progress Bar */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 25%;
+            background: #3b82f6;
+            transition: 0.4s;
+            z-index: 1000;
+        }
+
+        /* Screens */
+        .screen {
+            min-height: 100vh;
+            padding: 80px 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            background: rgba(255,255,255,0.03);
+
+            backdrop-filter: blur(20px);
+
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        #screen1,
+        #screen2,
+        #screen3,
+        #screen4 {
+            display: none;
+        }
+
+        h1,
+        p {
+            color: #f1f5f9;
+        }
+
+        /* Inputs */
+        input {
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            margin: 10px;
+            width: 70%;
+            max-width: 260px;
+
+            background: rgba(255,255,255,0.10);
+
+            color: white;
+
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #d1d5db;
+        }
+
+        /* Buttons */
+        button {
+            padding: 12px;
+            border-radius: 999px;
+            border: none;
+            background: #2563eb;
+            color: white;
+
+            width: 70%;
+            max-width: 260px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        /* LOGIN CARD */
+        .login-card {
+            position: relative;
+
+            margin-top: 140px;
+
+            width: 85%;
+            max-width: 320px;
+
+            padding: 35px 25px;
+
+            border-radius: 30px;
+
+            background: #4b556f;
+
+            backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.40);
+
+            z-index: 2;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+         }
+
+        /* CHILDHOOD VIDEO */
+       #childhoodVideo {
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 260px;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-90deg)
+        scale(1.15);
+
+    object-fit: contain;
+
+    object-position: center;
+
+    background: #4b556f;
+
+    border-radius: 30px;
+
+    z-index: 1;
+
+    opacity: 1;
+
+    filter:
+        brightness(1.03)
+        contrast(1.03)
+        saturate(1.03);
+
+    animation: none;
+
+    pointer-events: none;
+
+    box-shadow:
+    inset 0 -40px 60px rgba(75,85,111,0.9);
+}
+
+        /* CONTENT ABOVE VIDEO */
+        .login-content {
+            position: relative;
+
+            z-index: 2;
+
+            margin-top: 210px;
+        }
+
+        /* MAIN VIDEO */
+        #myVideo {
+            width: 90%;
+            max-width: 380px;
+
+            border-radius: 18px;
+
+            margin: 20px 0;
+        }
+
+        /* MEMORY IMAGES */
+        img {
+            width: 90%;
+            max-width: 280px;
+
+            border-radius: 18px;
+
+            margin: 12px 0;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* TAP HINT */
+        .tap {
+            position: absolute;
+
+            bottom: 20px;
+
+            color: #cbd5e1;
+
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            .login-card {
+
+                width: 92%;
+
+                max-width: 380px;
+
+                border-radius: 34px;
+
+                padding: 45px 28px;
+            }
+
+            #childhoodVideo {
+
+                height: 340px;
+
+                border-radius: 34px 34px 0 0;
+            }
+
+            .login-content {
+                margin-top: 220px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+            input {
+
+                width: 85%;
+
+                padding: 16px;
+
+                font-size: 16px;
+            }
+
+            button {
+
+                width: 85%;
+
+                padding: 16px;
+
+                font-size: 17px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Progress -->
+    <div id="progress"></div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="loginScreen" class="screen show">
+
+        <!-- LOGIN CARD -->
+        <div class="login-card">
+
+            <!-- VIDEO HEADER -->
+            <video id="childhoodVideo"
+                   autoplay
+                   muted
+                   loop
+                   playsinline>
+
+                <source src="childhood.mp4" type="video/mp4">
+
+            </video>
+
+            <!-- CONTENT -->
+            <div class="login-content">
+
+                <h1>Hey big Salu 👋</h1>
+
+                <p>This website is for you...Please login to continue</p>
+
+                <input id="nameInput"
+                       placeholder="Your Name">
+
+                <input id="passInput"
+                       type="password"
+                       placeholder="Password">
+
+                <button onclick="checkLogin()">
+                    Enter
+                </button>
+
+                <p id="errorMsg"
+                   style="color:#f87171; display:none;">
+                    Wrong details ❌
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3">
+    </audio>
+
+    <!-- SCREEN 1 -->
+    <div id="screen1"
+         class="screen"
+         onclick="nextScreen()">
+
+        <h1>Hey Salinee 👋</h1>
+
+        <p>I made something for you...</p>
+
+        <div class="tap">
+            Tap or Swipe →
+        </div>
+
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div id="screen2"
+         class="screen"
+         onclick="nextScreen()">
+
+        <h1>🎉 Happy Birthday! 🎂</h1>
+
+        <video id="myVideo"
+               controls
+               onclick="event.stopPropagation()">
+
+            <source src="video.mp4">
+
+        </video>
+
+        <div class="tap">
+            Tap or Swipe →
+        </div>
+
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div id="screen3"
+         class="screen"
+         onclick="nextScreen()">
+
+        <h1>Memories 📸</h1>
+
+        <img src="img1.jpg">
+
+        <img src="img2.jpg">
+
+        <p>
+            From childhood to now…
+            still the same smile 😊
+        </p>
+
+        <div class="tap">
+            Tap or Swipe →
+        </div>
+
+    </div>
+
+    <!-- SCREEN 4 -->
+    <div id="screen4"
+         class="screen">
+
+        <h1>🎁 One Last Thing...</h1>
+
+        <p id="finalText"></p>
+
+    </div>
+
+    <script>
+
+        let current = 1;
+
+        let startX = 0;
+        let endX = 0;
+
+        const video =
+            document.getElementById("myVideo");
+
+        const music =
+            document.getElementById("bgMusic");
+
+        /* FORCE VIDEO PLAY */
+        window.onload = () => {
+
+            const childVideo =
+                document.getElementById("childhoodVideo");
+
+            childVideo.play();
+
+        };
+
+        function showScreen(id) {
+
+            document.querySelectorAll(".screen")
+                .forEach(s => {
+
+                    s.style.display = "none";
+
+                    s.classList.remove("show");
+
+                });
+
+            const next =
+                document.getElementById("screen" + id);
+
+            next.style.display = "flex";
+
+            setTimeout(() => {
+
+                next.classList.add("show");
+
+            }, 50);
+
+            updateProgress(id);
+        }
+
+        function updateProgress(step) {
+
+            document.getElementById("progress")
+                .style.width = (step * 25) + "%";
+        }
+
+        /* LOGIN */
+        function checkLogin() {
+
+            const name =
+                document.getElementById("nameInput")
+                .value.toLowerCase();
+
+            const pass =
+                document.getElementById("passInput")
+                .value;
+
+            if (
+                name === "salinee tandel"
+                &&
+                pass === "12052004"
+            ) {
+
+                document.getElementById("loginScreen")
+                    .style.display = "none";
+
+                showScreen(1);
+
+            } else {
+
+                document.getElementById("errorMsg")
+                    .style.display = "block";
+            }
+        }
+
+        /* NEXT SCREEN */
+        function nextScreen() {
+
+            if (current === 2) {
+                video.pause();
+            }
+
+            if (current < 4) {
+
+                current++;
+
+                if (current === 3) {
+                    fadeInMusic();
+                }
+
+                if (current === 4) {
+                    typeText();
+                }
+
+                showScreen(current);
+            }
+        }
+
+        /* PREVIOUS SCREEN */
+        function prevScreen() {
+
+            if (current === 1) return;
+
+            current--;
+
+            if (current === 2) {
+                music.pause();
+            }
+
+            showScreen(current);
+        }
+
+        /* MUSIC */
+        function fadeInMusic() {
+
+            music.volume = 0;
+
+            music.play();
+
+            let vol = 0;
+
+            let interval = setInterval(() => {
+
+                if (vol < 1) {
+
+                    vol += 0.05;
+
+                    music.volume = vol;
+
+                } else {
+
+                    clearInterval(interval);
+                }
+
+            }, 100);
+        }
+
+        /* TYPEWRITER */
+        function typeText() {
+
+            const text =
+                "Stay happy, keep smiling 😊";
+
+            let i = 0;
+
+            document.getElementById("finalText")
+                .innerHTML = "";
+
+            function typing() {
+
+                if (i < text.length) {
+
+                    document.getElementById("finalText")
+                        .innerHTML += text.charAt(i);
+
+                    i++;
+
+                    setTimeout(typing, 50);
+                }
+            }
+
+            typing();
+        }
+
+        /* SWIPE SUPPORT */
+        document.addEventListener("touchstart", (e) => {
+
+            startX = e.touches[0].clientX;
+
+        });
+
+        document.addEventListener("touchend", (e) => {
+
+            endX = e.changedTouches[0].clientX;
+
+            let diff = startX - endX;
+
+            if (diff > 50) {
+                nextScreen();
+            }
+
+            if (diff < -50) {
+                prevScreen();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
