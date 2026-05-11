@@ -470,9 +470,6 @@
         let current = 1;
         let loggedIn = false;
 
-        let startX = 0;
-        let endX = 0;
-
         const video =
             document.getElementById("myVideo");
 
@@ -598,29 +595,6 @@
             typing();
         }
 
-        /* SWIPE SUPPORT */
-        document.addEventListener("touchstart", (e) => {
-            
-            if (!loggedIn) return;
-
-            startX = e.touches[0].clientX;
-
-        });
-
-        document.addEventListener("touchend", (e) => {
-
-            endX = e.changedTouches[0].clientX;
-
-            let diff = startX - endX;
-
-            if (diff > 50) {
-                nextScreen();
-            }
-
-            if (diff < -50) {
-                prevScreen();
-            }
-        });
     </script>
 
     <style>
