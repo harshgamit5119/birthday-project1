@@ -340,23 +340,23 @@
     <!-- SCREEN 1 -->
     <div id="screen1"
          class="screen"
-         onclick="nextScreen()">
-
+        
         <h1>Hey Salinee 👋</h1>
 
         <p>I made something for you...</p>
 
-        <div class="tap">
-            Tap or Swipe →
-        </div>
+        <div class="nav-buttons">
 
-    </div>
+    <button onclick="nextScreen()">
+        Next →
+    </button>
+
+</div>
 
     <!-- SCREEN 2 -->
     <div id="screen2"
          class="screen"
-         onclick="nextScreen()">
-
+    
         <h1>🎉 Happy Birthday! 🎂</h1>
 
         <video id="myVideo"
@@ -367,17 +367,22 @@
 
         </video>
 
-        <div class="tap">
-            Tap or Swipe →
-        </div>
+        <div class="nav-buttons">
 
-    </div>
+    <button onclick="prevScreen()">
+        ← Back
+    </button>
+
+    <button onclick="nextScreen()">
+        Next →
+    </button>
+
+</div>
 
     <!-- SCREEN 3 -->
     <div id="screen3"
          class="screen"
-         onclick="nextScreen()">
-
+        
         <h1>Memories 📸</h1>
 
         <img src="img1.jpg">
@@ -389,11 +394,17 @@
             still the same smile 😊
         </p>
 
-        <div class="tap">
-            Tap or Swipe →
-        </div>
+        <div class="nav-buttons">
 
-    </div>
+    <button onclick="prevScreen()">
+        ← Back
+    </button>
+
+    <button onclick="nextScreen()">
+        Next →
+    </button>
+
+</div>
 
     <!-- SCREEN 4 -->
     <div id="screen4"
@@ -603,8 +614,18 @@
                 prevScreen();
             }
         });
-
     </script>
+
+    <style>
+    .nav-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+    </style></script>
 
 </body>
 
