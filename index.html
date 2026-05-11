@@ -1,38 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Birthday Surprise</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
+
         body {
+
             margin: 0;
             overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, Arial;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
+
             background: linear-gradient(135deg, #232d45, #1f2940);
+
+            color: white;
         }
 
-        /* Progress Bar */
-        #progress {
+        /* GLOW BACKGROUND */
+
+        .bg-glow {
+
             position: fixed;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            filter: blur(90px);
+
+            z-index: -1;
+
+            opacity: 0.35;
+
+            animation: floatGlow 8s ease-in-out infinite;
+        }
+
+        .glow1 {
+
+            background: #2563eb;
+
+            top: -80px;
+            left: -80px;
+        }
+
+        .glow2 {
+
+            background: #7c3aed;
+
+            bottom: -100px;
+            right: -100px;
+
+            animation-delay: 4s;
+        }
+
+        @keyframes floatGlow {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(30px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* PROGRESS BAR */
+
+        #progress {
+
+            position: fixed;
+
             top: 0;
             left: 0;
+
             height: 3px;
+
             width: 25%;
+
             background: #3b82f6;
+
             transition: 0.4s;
+
             z-index: 1000;
         }
 
-        /* Screens */
+        /* SCREENS */
+
         .screen {
+
             min-height: 100vh;
+
             padding: 80px 20px;
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             justify-content: center;
 
             position: relative;
@@ -42,33 +120,68 @@
             backdrop-filter: blur(20px);
 
             opacity: 0;
-            transition: opacity 0.6s ease;
+
+            transform: translateY(20px);
+
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease;
+
             gap: 20px;
         }
 
         .show {
+
             opacity: 1;
+
+            transform: translateY(0);
         }
 
         #screen1,
         #screen2,
         #screen3,
         #screen4 {
+
             display: none;
         }
 
-        h1,
-        p {
-            color: #f1f5f9;
+        /* TYPOGRAPHY */
+
+        h1 {
+
+            color: #ffffff;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+
+            text-shadow:
+            0 0 18px rgba(255,255,255,0.08);
         }
 
-        /* Inputs */
+        p {
+
+            color: #dbe4f0;
+
+            font-weight: 300;
+
+            line-height: 1.6;
+        }
+
+        /* INPUTS */
+
         input {
+
             padding: 12px;
+
             border-radius: 12px;
+
             border: none;
+
             margin: 10px;
+
             width: 70%;
+
             max-width: 260px;
 
             background: rgba(255,255,255,0.10);
@@ -81,18 +194,24 @@
         }
 
         input::placeholder {
+
             color: #d1d5db;
         }
 
-        /* Buttons */
+        /* BUTTONS */
+
         button {
+
             padding: 12px;
+
             border-radius: 999px;
+
             border: none;
-            background: #2563eb;
+
             color: white;
 
             width: 70%;
+
             max-width: 260px;
 
             font-size: 15px;
@@ -100,36 +219,51 @@
             cursor: pointer;
 
             transition: 0.2s;
+
+            background: linear-gradient(135deg,#3b82f6,#2563eb);
+
+            box-shadow:
+            0 8px 20px rgba(37,99,235,0.35);
         }
 
         button:hover {
-            transform: translateY(-2px);
+
+            transform: translateY(-3px) scale(1.02);
+
+            box-shadow:
+            0 12px 25px rgba(37,99,235,0.45);
         }
 
         button:active {
+
             transform: scale(0.96);
         }
 
         /* LOGIN CARD */
+
         .login-card {
+
             position: relative;
 
             margin-top: 140px;
 
             width: 85%;
-            
+
             max-width: 320px;
 
             padding: 35px 25px;
 
             border-radius: 30px;
 
-            background: #4b556f;
+            background: rgba(255,255,255,0.08);
 
-            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.12);
+
+            backdrop-filter: blur(22px);
 
             box-shadow:
-                0 20px 60px rgba(0,0,0,0.40);
+            0 8px 32px rgba(0,0,0,0.35),
+            0 0 40px rgba(59,130,246,0.15);
 
             z-index: 2;
 
@@ -140,53 +274,49 @@
             flex-direction: column;
 
             align-items: center;
-         }
+        }
 
         /* CHILDHOOD VIDEO */
-       #childhoodVideo {
 
-    position: absolute;
+        #childhoodVideo {
 
-    width: 420px;
+            position: absolute;
 
-    height: 260px;
+            width: 420px;
 
-    top: 20px;
+            height: 260px;
 
-    left: 50%;
+            top: 20px;
 
-    transform:
-        translateX(-50%)
-        rotate(-90deg)
-        scale(1.15);
+            left: 50%;
 
-    object-fit: contain;
+            transform:
+            translateX(-50%)
+            rotate(-90deg)
+            scale(1.15);
 
-    object-position: center;
+            object-fit: contain;
 
-    background: #4b556f;
+            object-position: center;
 
-    border-radius: 30px;
+            background: #4b556f;
 
-    z-index: 1;
+            border-radius: 30px;
 
-    opacity: 1;
+            z-index: 1;
 
-    filter:
-        brightness(1.03)
-        contrast(1.03)
-        saturate(1.03);
+            opacity: 1;
 
-    animation: none;
+            pointer-events: none;
 
-    pointer-events: none;
+            box-shadow:
+            inset 0 -40px 60px rgba(75,85,111,0.9);
+        }
 
-    box-shadow:
-    inset 0 -40px 60px rgba(75,85,111,0.9);
-}
+        /* CONTENT */
 
-        /* CONTENT ABOVE VIDEO */
         .login-content {
+
             position: relative;
 
             z-index: 2;
@@ -194,20 +324,27 @@
             margin-top: 210px;
         }
 
-        /* MAIN VIDEO */
+        /* VIDEO */
+
         #myVideo {
-    width: 95%;
-    max-width: 420px;
-    height: 260px;
 
-    border-radius: 20px;
+            width: 95%;
 
-    margin-top: 20px;
-}
+            max-width: 420px;
 
-        /* MEMORY IMAGES */
+            height: 260px;
+
+            border-radius: 20px;
+
+            margin-top: 20px;
+        }
+
+        /* IMAGES */
+
         img {
+
             width: 90%;
+
             max-width: 280px;
 
             border-radius: 18px;
@@ -215,130 +352,128 @@
             margin: 12px 0;
 
             box-shadow:
-                0 10px 30px rgba(0,0,0,0.3);
+            0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* TAP HINT */
-        .tap {
-            position: absolute;
+        /* NAV BUTTONS */
 
-            bottom: 20px;
+        .nav-buttons {
 
-            color: #cbd5e1;
+            display: flex;
 
-            font-size: 14px;
+            gap: 15px;
+
+            margin-top: 25px;
         }
 
         /* MOBILE */
-       @media (max-width: 600px) {
 
-    body {
-        overflow-y: auto;
-    }
+        @media (max-width: 600px) {
 
-    .screen {
-        padding: 40px 20px;
-    }
+            body {
 
-    .login-card {
+                overflow-y: auto;
+            }
 
-    width: 82%;
+            .screen {
 
-    max-width: 300px;
+                padding: 40px 20px;
+            }
 
-    padding: 32px 22px;
+            .login-card {
 
-    border-radius: 28px;
+                width: 82%;
 
-    margin-top: 50px;
-}
+                max-width: 300px;
 
-    #childhoodVideo {
+                padding: 32px 22px;
 
-        width: 100%;
+                border-radius: 28px;
 
-        height: 240px;
+                margin-top: 50px;
+            }
 
-        object-fit: cover;
+            #childhoodVideo {
 
-        border-radius: 25px;
-    }
+                width: 100%;
 
-    .login-content {
-        margin-top: 250px;
-    }
+                height: 240px;
 
-    h1 {
-        font-size: 38px;
-    }
+                object-fit: cover;
 
-    p {
-        font-size: 18px;
-    }
+                border-radius: 25px;
+            }
 
-    input {
+            .login-content {
 
-    width: 85%;
+                margin-top: 250px;
+            }
 
-    padding: 14px;
+            h1 {
 
-    font-size: 16px;
+                font-size: 38px;
+            }
 
-    margin-top: 12px;
-    }
+            p {
 
-    button {
+                font-size: 18px;
+            }
 
-    width: 85%;
+            input {
 
-    padding: 14px;
+                width: 85%;
 
-    font-size: 16px;
+                padding: 14px;
 
-    margin-top: 14px;
-}
+                font-size: 16px;
 
-    #myVideo {
+                margin-top: 12px;
+            }
 
-        width: 100%;
+            button {
 
-        height: 230px;
+                width: 85%;
 
-        border-radius: 20px;
-    }
+                padding: 14px;
 
-    img {
+                font-size: 16px;
 
-        width: 95%;
+                margin-top: 14px;
+            }
 
-        max-width: 340px;
-    }
+            #myVideo {
 
-    .nav-buttons {
+                width: 100%;
 
-        flex-direction: row;
+                height: 230px;
+            }
 
-        justify-content: center;
+            img {
 
-        width: 100%;
-    }
-}
+                width: 95%;
+
+                max-width: 340px;
+            }
+        }
+
     </style>
 
 </head>
 
 <body>
 
+    <div class="bg-glow glow1"></div>
+    <div class="bg-glow glow2"></div>
+
     <!-- Progress -->
     <div id="progress"></div>
 
-    <!-- LOGIN SCREEN -->
+    <!-- LOGIN -->
+
     <div id="loginScreen" class="screen show">
 
-        <!-- LOGIN CARD -->
         <div class="login-card">
 
-            <!-- VIDEO HEADER -->
             <video id="childhoodVideo"
                    autoplay
                    muted
@@ -349,15 +484,13 @@
 
             </video>
 
-            <!-- CONTENT -->
             <div class="login-content">
 
                 <h1>Welcome 👋</h1>
 
                 <p>Please enter your details to continue</p>
 
-                <input id="nameInput"
-                       placeholder="Your Name">
+                <input id="nameInput" placeholder="Your Name">
 
                 <input id="passInput"
                        type="password"
@@ -379,85 +512,82 @@
     </div>
 
     <!-- SCREEN 1 -->
-<div id="screen1" class="screen">
 
-    <h1>Hey Salinee 👋</h1>
+    <div id="screen1" class="screen">
 
-    <p> Something is here for you...</p>
+        <h1>Hey Salinee 👋</h1>
 
-    <div class="nav-buttons">
+        <p>Something is here for you...</p>
 
-        <button onclick="nextScreen()">
-            Next →
-        </button>
+        <div class="nav-buttons">
 
-    </div>
+            <button onclick="nextScreen()">
+                Next →
+            </button>
 
-</div>
-
-
-<!-- SCREEN 2 -->
-<div id="screen2" class="screen">
-
-    <h1>Happy Birthday!</h1>
-
-    <iframe
-    id="myVideo"
-    width="100%"
-    height="220"
-    src="https://www.youtube.com/embed/RA7PKeSZgV0?rel=0"
-    title="Birthday Video"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
-
-    <div class="nav-buttons">
-
-        <button onclick="prevScreen()">
-            ← Back
-        </button>
-
-        <button onclick="nextScreen()">
-            Next →
-        </button>
+        </div>
 
     </div>
 
-</div>
+    <!-- SCREEN 2 -->
 
+    <div id="screen2" class="screen">
 
-<!-- SCREEN 3 -->
-<div id="screen3" class="screen">
+        <h1>Happy Birthday! 🎉</h1>
 
-    <h1>Memories 📸</h1>
+        <iframe
+            id="myVideo"
+            src="https://www.youtube.com/embed/RA7PKeSZgV0?rel=0"
+            title="Birthday Video"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
 
-    <img src="img1.jpg">
+        <div class="nav-buttons">
 
-    <img src="img2.jpg">
+            <button onclick="prevScreen()">
+                ← Back
+            </button>
 
-    <p>
-        From childhood to now…
-        still the same smile 😊
-    </p>
+            <button onclick="nextScreen()">
+                Next →
+            </button>
 
-    <div class="nav-buttons">
-
-        <button onclick="prevScreen()">
-            ← Back
-        </button>
-
-        <button onclick="nextScreen()">
-            Next →
-        </button>
+        </div>
 
     </div>
 
-</div>
+    <!-- SCREEN 3 -->
+
+    <div id="screen3" class="screen">
+
+        <h1>Memories 📸</h1>
+
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+
+        <p>
+            From childhood to now…
+            still the same smile 😊
+        </p>
+
+        <div class="nav-buttons">
+
+            <button onclick="prevScreen()">
+                ← Back
+            </button>
+
+            <button onclick="nextScreen()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
 
     <!-- SCREEN 4 -->
-    <div id="screen4"
-         class="screen">
+
+    <div id="screen4" class="screen">
 
         <h1>🎁 One Last Thing...</h1>
 
@@ -468,34 +598,29 @@
     <script>
 
         let current = 1;
-        let loggedIn = false;
-
-        const video =
-            document.getElementById("myVideo");
 
         /* FORCE VIDEO PLAY */
+
         window.onload = () => {
 
             const childVideo =
-                document.getElementById("childhoodVideo");
+            document.getElementById("childhoodVideo");
 
             childVideo.play();
-
         };
 
         function showScreen(id) {
 
             document.querySelectorAll(".screen")
-                .forEach(s => {
+            .forEach(s => {
 
-                    s.style.display = "none";
+                s.style.display = "none";
 
-                    s.classList.remove("show");
-
-                });
+                s.classList.remove("show");
+            });
 
             const next =
-                document.getElementById("screen" + id);
+            document.getElementById("screen" + id);
 
             next.style.display = "flex";
 
@@ -511,19 +636,20 @@
         function updateProgress(step) {
 
             document.getElementById("progress")
-                .style.width = (step * 25) + "%";
+            .style.width = (step * 25) + "%";
         }
 
         /* LOGIN */
+
         function checkLogin() {
 
             const name =
-                document.getElementById("nameInput")
-                .value.toLowerCase();
+            document.getElementById("nameInput")
+            .value.toLowerCase();
 
             const pass =
-                document.getElementById("passInput")
-                .value;
+            document.getElementById("passInput")
+            .value;
 
             if (
                 name === "salinee tandel"
@@ -532,25 +658,27 @@
             ) {
 
                 document.getElementById("loginScreen")
-                    .style.display = "none";
-                loggedIn = true;
+                .style.display = "none";
+
                 showScreen(1);
 
             } else {
 
                 document.getElementById("errorMsg")
-                    .style.display = "block";
+                .style.display = "block";
             }
         }
 
-        /* NEXT SCREEN */
+        /* NEXT */
 
         function nextScreen() {
+
             if (current < 4) {
 
                 current++;
 
                 if (current === 4) {
+
                     typeText();
                 }
 
@@ -558,7 +686,8 @@
             }
         }
 
-        /* PREVIOUS SCREEN */
+        /* PREVIOUS */
+
         function prevScreen() {
 
             if (current === 1) return;
@@ -569,22 +698,23 @@
         }
 
         /* TYPEWRITER */
+
         function typeText() {
 
             const text =
-                "Stay happy, keep smiling 😊";
+            "Stay happy, keep smiling 😊";
 
             let i = 0;
 
             document.getElementById("finalText")
-                .innerHTML = "";
+            .innerHTML = "";
 
             function typing() {
 
                 if (i < text.length) {
 
                     document.getElementById("finalText")
-                        .innerHTML += text.charAt(i);
+                    .innerHTML += text.charAt(i);
 
                     i++;
 
@@ -596,17 +726,6 @@
         }
 
     </script>
-
-    <style>
-    .nav-buttons {
-
-    display: flex;
-
-    gap: 15px;
-
-    margin-top: 25px;
-}
-    </style>
 
 </body>
 
