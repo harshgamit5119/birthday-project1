@@ -227,54 +227,56 @@
         /* MOBILE */
         @media (max-width: 600px) {
 
-            .login-card {
+    .login-card {
 
-                width: 92%;
+        width: 92%;
 
-                max-width: 380px;
+        max-width: 380px;
 
-                border-radius: 34px;
+        padding: 40px 28px;
 
-                padding: 45px 28px;
-            }
+        border-radius: 36px;
+    }
 
-            #childhoodVideo {
+    #childhoodVideo {
 
-                height: 340px;
+        width: 100%;
 
-                border-radius: 34px 34px 0 0;
-            }
+        height: 180px;
 
-            .login-content {
-                margin-top: 220px;
-            }
+        object-fit: cover;
+    }
 
-            h1 {
-                font-size: 38px;
-            }
+    h1 {
+        font-size: 42px;
+    }
 
-            p {
-                font-size: 18px;
-            }
+    p {
+        font-size: 18px;
+    }
 
-            input {
+    input {
 
-                width: 85%;
+        width: 90%;
 
-                padding: 16px;
+        padding: 18px;
 
-                font-size: 16px;
-            }
+        font-size: 17px;
 
-            button {
+        margin-top: 14px;
+    }
 
-                width: 85%;
+    button {
 
-                padding: 16px;
+        width: 90%;
 
-                font-size: 17px;
-            }
-        }
+        padding: 18px;
+
+        font-size: 18px;
+
+        margin-top: 16px;
+    }
+}
     </style>
 
 </head>
@@ -406,6 +408,7 @@
     <script>
 
         let current = 1;
+        let loggedIn = false;
 
         let startX = 0;
         let endX = 0;
@@ -476,7 +479,7 @@
 
                 document.getElementById("loginScreen")
                     .style.display = "none";
-
+                loggedIn = true;
                 showScreen(1);
 
             } else {
@@ -530,11 +533,13 @@
 
             music.play();
 
+            music.playbackRate = 0.85;
+
             let vol = 0;
 
             let interval = setInterval(() => {
 
-                if (vol < 1) {
+                if (vol < 0.35) {
 
                     vol += 0.05;
 
@@ -577,6 +582,8 @@
 
         /* SWIPE SUPPORT */
         document.addEventListener("touchstart", (e) => {
+            
+            if (!loggedIn) return;
 
             startX = e.touches[0].clientX;
 
