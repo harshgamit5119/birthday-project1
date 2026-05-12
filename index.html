@@ -365,7 +365,101 @@
 
             margin-top: 25px;
         }
+/* POLAROID GALLERY */
 
+.polaroid-gallery {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-top: 20px;
+}
+
+.polaroid {
+
+    background: white;
+
+    padding: 12px 12px 22px;
+
+    width: 220px;
+
+    border-radius: 10px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+
+    transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+
+    animation:
+    floatPolaroid 4s ease-in-out infinite;
+}
+
+.polaroid img {
+
+    width: 100%;
+
+    border-radius: 6px;
+
+    display: block;
+}
+
+.polaroid p {
+
+    color: #111827;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+/* DIFFERENT ROTATIONS */
+
+.rotate1 { transform: rotate(-4deg); }
+.rotate2 { transform: rotate(3deg); }
+.rotate3 { transform: rotate(-2deg); }
+.rotate4 { transform: rotate(5deg); }
+.rotate5 { transform: rotate(-5deg); }
+.rotate6 { transform: rotate(2deg); }
+.rotate7 { transform: rotate(-3deg); }
+.rotate8 { transform: rotate(4deg); }
+
+/* FLOATING EFFECT */
+
+@keyframes floatPolaroid {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* HOVER */
+
+.polaroid:hover {
+
+    transform:
+    scale(1.04)
+    rotate(0deg);
+
+    box-shadow:
+    0 25px 45px rgba(0,0,0,0.45);
+}
         /* MOBILE */
 
         @media (max-width: 600px) {
@@ -561,33 +655,67 @@
     </div>
 
     <!-- SCREEN 3 -->
+<div id="screen3" class="screen">
 
-    <div id="screen3" class="screen">
+    <h1>Memories 📸</h1>
 
-        <h1>Memories 📸</h1>
+    <div class="polaroid-gallery">
 
-        <img src="img1.jpg">
-        <img src="img2.jpg">
+        <div class="polaroid rotate1">
+            <img src="img1.jpg">
+            <p>tiny chaos machine ✨</p>
+        </div>
 
-        <p>
-            From childhood to now…
-            still the same smile 😊
-        </p>
+        <div class="polaroid rotate2">
+            <img src="img2.jpg">
+            <p>same smile forever 😊</p>
+        </div>
 
-        <div class="nav-buttons">
+        <div class="polaroid rotate3">
+            <img src="img3.jpg">
+            <p>little superstar 🌸</p>
+        </div>
 
-            <button onclick="prevScreen()">
-                ← Back
-            </button>
+        <div class="polaroid rotate4">
+            <img src="img4.jpg">
+            <p>main character energy 🎀</p>
+        </div>
 
-            <button onclick="nextScreen()">
-                Next →
-            </button>
+        <div class="polaroid rotate5">
+            <img src="img5.jpg">
+            <p>too cute to handle 😭</p>
+        </div>
 
+        <div class="polaroid rotate6">
+            <img src="img6.jpg">
+            <p>still iconic 💫</p>
+        </div>
+
+        <div class="polaroid rotate7">
+            <img src="img7.jpg">
+            <p>childhood memories ❤️</p>
+        </div>
+
+        <div class="polaroid rotate8">
+            <img src="img8.jpg">
+            <p>forever special ✨</p>
         </div>
 
     </div>
 
+    <div class="nav-buttons">
+
+        <button onclick="prevScreen()">
+            ← Back
+        </button>
+
+        <button onclick="nextScreen()">
+            Next →
+        </button>
+
+    </div>
+
+</div>
     <!-- SCREEN 4 -->
 
     <div id="screen4" class="screen">
