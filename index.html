@@ -9,7 +9,7 @@
     <title>Birthday Surprise</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">  
     <style>
 
         body {
@@ -460,6 +460,78 @@
     box-shadow:
     0 25px 45px rgba(0,0,0,0.45);
 }
+
+/* FINAL LETTER */
+
+.letter-card {
+
+    width: 85%;
+
+    max-width: 650px;
+
+    padding: 40px 30px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+
+    animation:
+    fadeLetter 1.2s ease;
+}
+
+#finalText {
+
+    font-family: 'Caveat', cursive;
+
+    font-size: 34px;
+
+    line-height: 1.8;
+
+    color: #ffffff;
+
+    margin-top: 25px;
+
+    white-space: pre-line;
+}
+
+.signature {
+
+    margin-top: 30px;
+
+    font-family: 'Caveat', cursive;
+
+    font-size: 28px;
+
+    color: #93c5fd;
+}
+
+/* LETTER ANIMATION */
+
+@keyframes fadeLetter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+        translateY(30px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+        translateY(0);
+    }
+}
         /* MOBILE */
 
         @media (max-width: 600px) {
@@ -714,15 +786,21 @@
 
 </div>
     <!-- SCREEN 4 -->
+<div id="screen4" class="screen">
 
-    <div id="screen4" class="screen">
+    <div class="letter-card">
 
-        <h1>🎁 One Last Thing...</h1>
+        <h1>One Last Thing ✨</h1>
 
         <p id="finalText"></p>
 
+        <div class="signature">
+            — Harsh
+        </div>
+
     </div>
 
+</div>
     <script>
 
         let current = 1;
@@ -830,8 +908,16 @@
         function typeText() {
 
             const text =
-            "Stay happy, keep smiling 😊";
+`Some people become memories.
 
+But some people become a part of your life forever.
+
+Thank you for all the laughs,
+the chaos,
+the memories,
+and simply being you.
+
+Happy 22nd Birthday ✨`;
             let i = 0;
 
             document.getElementById("finalText")
