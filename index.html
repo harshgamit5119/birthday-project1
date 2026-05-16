@@ -133,6 +133,86 @@ text-shadow:
 0 0 30px rgba(59,130,246,.45);
 }
 
+.drop-title{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:6px;
+
+font-size:72px;
+
+font-weight:700;
+
+letter-spacing:3px;
+}
+
+.drop-title span{
+
+display:inline-block;
+
+opacity:0;
+
+transform:translateY(-300px);
+
+animation:dropLetter .8s forwards;
+}
+
+/* delay each letter */
+
+.drop-title span:nth-child(1){animation-delay:.1s;}
+.drop-title span:nth-child(2){animation-delay:.2s;}
+.drop-title span:nth-child(3){animation-delay:.3s;}
+.drop-title span:nth-child(4){animation-delay:.4s;}
+.drop-title span:nth-child(6){animation-delay:.6s;}
+.drop-title span:nth-child(7){animation-delay:.7s;}
+.drop-title span:nth-child(8){animation-delay:.8s;}
+.drop-title span:nth-child(9){animation-delay:.9s;}
+.drop-title span:nth-child(10){animation-delay:1s;}
+.drop-title span:nth-child(11){animation-delay:1.1s;}
+
+.space{
+
+width:24px;
+}
+
+@keyframes dropLetter{
+
+0%{
+
+opacity:0;
+
+transform:
+translateY(-300px)
+rotate(-20deg);
+}
+
+70%{
+
+transform:
+translateY(25px);
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translateY(0);
+}
+}
+
+@media(max-width:600px){
+
+.drop-title{
+
+font-size:40px;
+}
+}
+
 .sub{
 
 margin-top:10px;
@@ -230,7 +310,23 @@ font-size:32px;
 
 <div class="closed-card">
 
-<h1>SITE CLOSED</h1>
+<h1 class="drop-title">
+
+<span>S</span>
+<span>I</span>
+<span>T</span>
+<span>E</span>
+
+<span class="space"></span>
+
+<span>C</span>
+<span>L</span>
+<span>O</span>
+<span>S</span>
+<span>E</span>
+<span>D</span>
+
+</h1>
 
 <div class="sub">
 by Harsh
