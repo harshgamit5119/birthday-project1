@@ -2,953 +2,259 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNCYELG2BW"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DNCYELG2BW');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DNCYELG2BW');
 </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Birthday Surprise</title>
+<title>Temporarily Closed</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">  
-    <style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        body {
+<style>
 
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
+body{
 
-            background: linear-gradient(135deg, #232d45, #1f2940);
+margin:0;
+min-height:100vh;
 
-            color: white;
-        }
+display:flex;
+justify-content:center;
+align-items:center;
 
-        /* GLOW BACKGROUND */
+overflow:hidden;
 
-        .bg-glow {
+font-family:'Poppins',sans-serif;
 
-            position: fixed;
+background:
+linear-gradient(135deg,#232d45,#1f2940);
 
-            width: 300px;
-            height: 300px;
+color:white;
 
-            border-radius: 50%;
-
-            filter: blur(90px);
-
-            z-index: -1;
-
-            opacity: 0.35;
-
-            animation: floatGlow 8s ease-in-out infinite;
-        }
-
-        .glow1 {
-
-            background: #2563eb;
-
-            top: -80px;
-            left: -80px;
-        }
-
-        .glow2 {
-
-            background: #7c3aed;
-
-            bottom: -100px;
-            right: -100px;
-
-            animation-delay: 4s;
-        }
-
-        @keyframes floatGlow {
-
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(30px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        /* PROGRESS BAR */
-
-        #progress {
-
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
-            height: 3px;
-
-            width: 25%;
-
-            background: #3b82f6;
-
-            transition: 0.4s;
-
-            z-index: 1000;
-        }
-
-        /* SCREENS */
-
-        .screen {
-
-            min-height: 100vh;
-
-            padding: 80px 20px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            position: relative;
-
-            background: rgba(255,255,255,0.03);
-
-            backdrop-filter: blur(20px);
-
-            opacity: 0;
-
-            transform: translateY(20px);
-
-            transition:
-                opacity 0.6s ease,
-                transform 0.6s ease;
-
-            gap: 20px;
-        }
-
-        .show {
-
-            opacity: 1;
-
-            transform: translateY(0);
-        }
-
-        #screen1,
-        #screen2,
-        #screen3,
-        #screen4 {
-
-            display: none;
-        }
-
-        /* TYPOGRAPHY */
-
-        h1 {
-
-            color: #ffffff;
-
-            font-weight: 600;
-
-            letter-spacing: 0.5px;
-
-            text-shadow:
-            0 0 18px rgba(255,255,255,0.08);
-        }
-
-        p {
-
-            color: #dbe4f0;
-
-            font-weight: 300;
-
-            line-height: 1.6;
-        }
-
-        /* INPUTS */
-
-        input {
-
-            padding: 12px;
-
-            border-radius: 12px;
-
-            border: none;
-
-            margin: 10px;
-
-            width: 70%;
-
-            max-width: 260px;
-
-            background: rgba(255,255,255,0.10);
-
-            color: white;
-
-            outline: none;
-
-            font-size: 16px;
-        }
-
-        input::placeholder {
-
-            color: #d1d5db;
-        }
-
-        /* BUTTONS */
-
-        button {
-
-            padding: 12px;
-
-            border-radius: 999px;
-
-            border: none;
-
-            color: white;
-
-            width: 70%;
-
-            max-width: 260px;
-
-            font-size: 15px;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-
-            background: linear-gradient(135deg,#3b82f6,#2563eb);
-
-            box-shadow:
-            0 8px 20px rgba(37,99,235,0.35);
-        }
-
-        button:hover {
-
-            transform: translateY(-3px) scale(1.02);
-
-            box-shadow:
-            0 12px 25px rgba(37,99,235,0.45);
-        }
-
-        button:active {
-
-            transform: scale(0.96);
-        }
-
-        /* LOGIN CARD */
-
-        .login-card {
-
-            position: relative;
-
-            margin-top: 140px;
-
-            width: 85%;
-
-            max-width: 320px;
-
-            padding: 35px 25px;
-
-            border-radius: 30px;
-
-            background: rgba(255,255,255,0.08);
-
-            border: 1px solid rgba(255,255,255,0.12);
-
-            backdrop-filter: blur(22px);
-
-            box-shadow:
-            0 8px 32px rgba(0,0,0,0.35),
-            0 0 40px rgba(59,130,246,0.15);
-
-            z-index: 2;
-
-            overflow: hidden;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-        }
-
-        /* CHILDHOOD VIDEO */
-
-        #childhoodVideo {
-
-            position: absolute;
-
-            width: 420px;
-
-            height: 260px;
-
-            top: 20px;
-
-            left: 50%;
-
-            transform:
-            translateX(-50%)
-            rotate(-90deg)
-            scale(1.15);
-
-            object-fit: contain;
-
-            object-position: center;
-
-            background: #4b556f;
-
-            border-radius: 30px;
-
-            z-index: 1;
-
-            opacity: 1;
-
-            pointer-events: none;
-
-            box-shadow:
-            inset 0 -40px 60px rgba(75,85,111,0.9);
-        }
-
-        /* CONTENT */
-
-        .login-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            margin-top: 210px;
-        }
-
-        /* VIDEO */
-
-        #myVideo {
-
-            width: 95%;
-
-            max-width: 420px;
-
-            height: 260px;
-
-            border-radius: 20px;
-
-            margin-top: 20px;
-        }
-
-        /* IMAGES */
-
-        img {
-
-            width: 90%;
-
-            max-width: 280px;
-
-            border-radius: 18px;
-
-            margin: 12px 0;
-
-            box-shadow:
-            0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        /* NAV BUTTONS */
-
-        .nav-buttons {
-
-            display: flex;
-
-            gap: 15px;
-
-            margin-top: 25px;
-        }
-/* POLAROID GALLERY */
-
-.polaroid-gallery {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 30px;
-
-    margin-top: 20px;
+text-align:center;
 }
 
-.polaroid {
+/* BACKGROUND GLOWS */
 
-    background: white;
+.bg-glow{
 
-    padding: 12px 12px 22px;
+position:fixed;
 
-    width: 220px;
+width:350px;
+height:350px;
 
-    border-radius: 10px;
+border-radius:50%;
 
-    box-shadow:
-    0 15px 35px rgba(0,0,0,0.35);
+filter:blur(90px);
 
-    transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+opacity:.35;
 
-    animation:
-    floatPolaroid 4s ease-in-out infinite;
+z-index:-1;
+
+animation:floatGlow 8s ease-in-out infinite;
 }
 
-.polaroid img {
+.glow1{
 
-    width: 100%;
+background:#2563eb;
 
-    border-radius: 6px;
-
-    display: block;
+top:-100px;
+left:-100px;
 }
 
-.polaroid p {
+.glow2{
 
-    color: #111827;
+background:#7c3aed;
 
-    margin-top: 12px;
+bottom:-100px;
+right:-100px;
 
-    font-size: 14px;
-
-    font-weight: 500;
+animation-delay:4s;
 }
 
-/* DIFFERENT ROTATIONS */
+@keyframes floatGlow{
 
-.rotate1 { transform: rotate(-4deg); }
-.rotate2 { transform: rotate(3deg); }
-.rotate3 { transform: rotate(-2deg); }
-.rotate4 { transform: rotate(5deg); }
-.rotate5 { transform: rotate(-5deg); }
-.rotate6 { transform: rotate(2deg); }
-.rotate7 { transform: rotate(-3deg); }
-.rotate8 { transform: rotate(4deg); }
-
-/* FLOATING EFFECT */
-
-@keyframes floatPolaroid {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+0%{
+transform:translateY(0);
 }
 
-/* HOVER */
-
-.polaroid:hover {
-
-    transform:
-    scale(1.04)
-    rotate(0deg);
-
-    box-shadow:
-    0 25px 45px rgba(0,0,0,0.45);
+50%{
+transform:translateY(35px);
 }
 
-/* FINAL LETTER */
-
-.letter-card {
-
-    width: 85%;
-
-    max-width: 650px;
-
-    padding: 40px 30px;
-
-    border-radius: 28px;
-
-    background: rgba(255,255,255,0.08);
-
-    border: 1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(20px);
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,0.35);
-
-    animation:
-    fadeLetter 1.2s ease;
+100%{
+transform:translateY(0);
+}
 }
 
-#finalText {
+/* MAIN CARD */
 
-    font-family: 'Caveat', cursive;
+.closed-card{
 
-    font-size: 34px;
+width:85%;
+max-width:800px;
 
-    line-height: 1.8;
+padding:50px;
 
-    color: #ffffff;
+border-radius:35px;
 
-    margin-top: 25px;
+background:rgba(255,255,255,.08);
 
-    white-space: pre-line;
+border:1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(25px);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.35),
+0 0 60px rgba(59,130,246,.15);
+
+animation:fadeIn 1.2s ease;
 }
 
-.signature {
+h1{
 
-    margin-top: 30px;
+font-size:72px;
 
-    font-family: 'Caveat', cursive;
+margin:0;
 
-    font-size: 28px;
+font-weight:700;
 
-    color: #93c5fd;
+letter-spacing:4px;
+
+text-shadow:
+0 0 30px rgba(59,130,246,.45);
 }
 
-/* LETTER ANIMATION */
+.sub{
 
-@keyframes fadeLetter {
+margin-top:10px;
 
-    from {
+font-size:24px;
 
-        opacity: 0;
-
-        transform:
-        translateY(30px);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-        translateY(0);
-    }
-}
-        /* MOBILE */
-
-        @media (max-width: 600px) {
-
-            body {
-
-                overflow-y: auto;
-            }
-
-            .screen {
-
-                padding: 40px 20px;
-            }
-
-            .login-card {
-
-                width: 82%;
-
-                max-width: 300px;
-
-                padding: 32px 22px;
-
-                border-radius: 28px;
-
-                margin-top: 50px;
-            }
-#childhoodVideo {
-
-    width: 100%;
-
-    height: 240px;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    border-radius: 25px;
-
-    background: transparent;
+color:#93c5fd;
 }
 
-            .login-content {
+.message{
 
-                margin-top: 250px;
-            }
+margin-top:45px;
 
-            h1 {
+font-size:22px;
 
-                font-size: 38px;
-            }
+line-height:1.8;
 
-            p {
+color:#dbe4f0;
+}
 
-                font-size: 18px;
-            }
+.date{
 
-            input {
+display:block;
 
-                width: 85%;
+margin-top:18px;
 
-                padding: 14px;
+font-size:48px;
 
-                font-size: 16px;
+font-weight:700;
 
-                margin-top: 12px;
-            }
+color:white;
+}
 
-            button {
+.small{
 
-                width: 85%;
+margin-top:40px;
 
-                padding: 14px;
+font-size:14px;
 
-                font-size: 16px;
+opacity:.6;
+}
 
-                margin-top: 14px;
-            }
+@keyframes fadeIn{
 
-            #myVideo {
+from{
 
-                width: 100%;
+opacity:0;
+transform:translateY(30px);
+}
 
-                height: 230px;
-            }
+to{
 
-            img {
+opacity:1;
+transform:translateY(0);
+}
+}
 
-                width: 95%;
+@media(max-width:600px){
 
-                max-width: 340px;
-            }
-        }
+.closed-card{
 
-    </style>
+padding:35px 20px;
+}
+
+h1{
+
+font-size:40px;
+}
+
+.sub{
+
+font-size:18px;
+}
+
+.message{
+
+font-size:18px;
+}
+
+.date{
+
+font-size:32px;
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-    <div class="bg-glow glow1"></div>
-    <div class="bg-glow glow2"></div>
+<div class="bg-glow glow1"></div>
+<div class="bg-glow glow2"></div>
 
-    <!-- Progress -->
-    <div id="progress"></div>
+<div class="closed-card">
 
-    <!-- LOGIN -->
+<h1>SITE CLOSED</h1>
 
-    <div id="loginScreen" class="screen show">
+<div class="sub">
+by Harsh
+</div>
 
-        <div class="login-card">
+<div class="message">
 
-            <video id="childhoodVideo"
-                   autoplay
-                   muted
-                   loop
-                   playsinline>
+This website has been temporarily closed.
 
-                <source src="childhood.mp4" type="video/mp4">
+It will reopen on
 
-            </video>
-
-            <div class="login-content">
-
-                <h1>Welcome 👋</h1>
-
-                <p>Please enter your details to continue</p>
-
-                <input id="nameInput" placeholder="Your Name">
-
-                <input id="passInput"
-                       type="password"
-                       placeholder="Password">
-
-                <button onclick="checkLogin()">
-                    Enter
-                </button>
-
-                <p id="errorMsg"
-                   style="color:#f87171; display:none;">
-                    Wrong details ❌
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- SCREEN 1 -->
-
-    <div id="screen1" class="screen">
-
-        <h1>Hey Salinee 👋</h1>
-
-        <p>Something is here for you...</p>
-
-        <div class="nav-buttons">
-
-            <button onclick="nextScreen()">
-                Next →
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- SCREEN 2 -->
-
-    <div id="screen2" class="screen">
-
-        <h1>Happy Birthday! 🎉</h1>
-
-        <iframe
-            id="myVideo"
-            src="https://www.youtube.com/embed/RA7PKeSZgV0?rel=0"
-            title="Birthday Video"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
-
-        <div class="nav-buttons">
-
-            <button onclick="prevScreen()">
-                ← Back
-            </button>
-
-            <button onclick="nextScreen()">
-                Next →
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- SCREEN 3 -->
-<div id="screen3" class="screen">
-
-    <h1>Your Memories 📸</h1>
-
-    <div class="polaroid-gallery">
-
-        <div class="polaroid rotate1">
-            <img src="img1.jpg">
-            <p>tiny chaos machine ✨</p>
-        </div>
-
-        <div class="polaroid rotate2">
-            <img src="img2.jpg">
-            <p>same smile forever 😊</p>
-        </div>
-
-        <div class="polaroid rotate3">
-            <img src="img3.jpg">
-            <p>little superstar 🌸</p>
-        </div>
-
-        <div class="polaroid rotate4">
-            <img src="img4.jpg">
-            <p>main character energy 🎀</p>
-        </div>
-
-        <div class="polaroid rotate5">
-            <img src="img5.jpg">
-            <p>too cute to handle 😭</p>
-        </div>
-
-        <div class="polaroid rotate6">
-            <img src="img6.jpg">
-            <p>still iconic 💫</p>
-        </div>
-
-        <div class="polaroid rotate7">
-            <img src="img7.jpg">
-            <p>childhood memories ❤️</p>
-        </div>
-
-        </div>
-
-    </div>
-
-    <div class="nav-buttons">
-
-        <button onclick="prevScreen()">
-            ← Back
-        </button>
-
-        <button onclick="nextScreen()">
-            Next →
-        </button>
-
-    </div>
+<span class="date">
+12 May 2027
+</span>
 
 </div>
-    <!-- SCREEN 4 -->
-<div id="screen4" class="screen">
 
-    <div class="letter-card">
+<div class="small">
 
-        <h1>One Last Thing ✨</h1>
-
-        <p id="finalText"></p>
-
-        <div class="signature">
-            — Harsh
-        </div>
-
-    </div>
+Thank you for visiting ✨
 
 </div>
-    <script>
 
-        let current = 1;
-
-        /* FORCE VIDEO PLAY */
-
-        window.onload = () => {
-
-            const childVideo =
-            document.getElementById("childhoodVideo");
-
-            childVideo.play();
-        };
-
-        function showScreen(id) {
-
-            document.querySelectorAll(".screen")
-            .forEach(s => {
-
-                s.style.display = "none";
-
-                s.classList.remove("show");
-            });
-
-            const next =
-            document.getElementById("screen" + id);
-
-            next.style.display = "flex";
-
-            setTimeout(() => {
-
-                next.classList.add("show");
-
-            }, 50);
-
-            updateProgress(id);
-        }
-
-        function updateProgress(step) {
-
-            document.getElementById("progress")
-            .style.width = (step * 25) + "%";
-        }
-
-        /* LOGIN */
-
-        function checkLogin() {
-
-            const name =
-            document.getElementById("nameInput")
-            .value.toLowerCase();
-
-            const pass =
-            document.getElementById("passInput")
-            .value;
-
-            if (
-                name === "salinee tandel"
-                &&
-                pass === "12052004"
-            ) {
-
-                document.getElementById("loginScreen")
-                .style.display = "none";
-
-                showScreen(1);
-
-            } else {
-
-                document.getElementById("errorMsg")
-                .style.display = "block";
-            }
-        }
-
-        /* NEXT */
-
-        function nextScreen() {
-
-            if (current < 4) {
-
-                current++;
-
-                if (current === 4) {
-
-                    typeText();
-                }
-
-                showScreen(current);
-            }
-        }
-
-        /* PREVIOUS */
-
-        function prevScreen() {
-
-            if (current === 1) return;
-
-            current--;
-
-            showScreen(current);
-        }
-
-        /* TYPEWRITER */
-
-        function typeText() {
-
-           const text =
-`Wishing you a day filled with happiness,
-beautiful memories,
-and countless reasons to smile.
-
-May this new year of your life
-bring success, peace,
-and everything your heart wishes for.
-
-Happy 22nd Birthday ✨`;
-
-            let i = 0;
-
-            document.getElementById("finalText")
-            .innerHTML = "";
-
-            function typing() {
-
-                if (i < text.length) {
-
-                    document.getElementById("finalText")
-                    .innerHTML += text.charAt(i);
-
-                    i++;
-
-                    setTimeout(typing, 50);
-                }
-            }
-
-            typing();
-        }
-
-    </script>
+</div>
 
 </body>
 
