@@ -209,6 +209,15 @@ translateY(0);
 
 @media(max-width:600px){
 
+    @media(max-width:600px){
+
+#countdown{
+
+font-size:20px;
+}
+
+}
+
 .drop-title{
 
 font-size:40px;
@@ -336,6 +345,18 @@ font-size:18px;
 
 font-size:32px;
 }
+#countdown{
+
+margin-top:25px;
+
+font-size:28px;
+
+font-weight:600;
+
+color:#93c5fd;
+
+line-height:1.8;
+}
 
 }
 
@@ -373,6 +394,7 @@ It will reopen on
 <span class="date">
 12 May 2027
 </span>
+<div id="countdown"></div>
 
 </div>
 
@@ -400,5 +422,45 @@ Thank you for visiting ✨
 </div>
 
 </body>
+<script>
+
+const targetDate =
+new Date("May 12, 2027 00:00:00").getTime();
+
+function updateCountdown(){
+
+const now = new Date().getTime();
+
+const distance = targetDate - now;
+
+const days =
+Math.floor(distance / (1000*60*60*24));
+
+const hours =
+Math.floor((distance % (1000*60*60*24))
+/ (1000*60*60));
+
+const minutes =
+Math.floor((distance % (1000*60*60))
+/ (1000*60));
+
+const seconds =
+Math.floor((distance % (1000*60))
+/ 1000);
+
+document.getElementById("countdown")
+.innerHTML =
+`${days} Days<br>
+${hours} Hours
+${minutes} Minutes
+${seconds} Seconds`;
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+</script>
 
 </html>
